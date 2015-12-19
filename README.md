@@ -1,18 +1,63 @@
 # set-verbosity
 
-Set process.env[DEBUG] given process.argv
+Set `process.env[DEBUG]` given process.argv
 
 ## Install
 
-    npm i set-verbosity --save-dev
+    npm i maboiteaspam/set-verbosity --save
 
 ## Usage
 
+###### process.argv
+
+Using the node `process.argv` value
+
 ```js
-var module = require('set-verbosity');          // your code here,
-                                                // your doc here.
+var debug = require('set-verbosity').raw('module-name', process.argv.join(' '));
+
+debug('hello')
+```
+
+Which then, can be invoked in such fashion
+```sh
+module-name -v module-name
+module-name --verbose module-name,tomate,set-verbosity
+```
+
+###### minimist
+
+Using `minimist` module to pre parse values
+
+```js
+var argv  = require('minimist')(process.argv.slice(2));
+var debug = require('./index.js').parsed('module-name', argv.v||argv.verbose);
+
+debug('hello')
+```
+
+Which then, can be invoked in such fashion
+```sh
+module-name -v module-name
+module-name --verbose module-name,tomate,set-verbosity
+```
+
+### debug object
+
+This module returns instances of `debug` module
+
+```js
+var debug = require('set-verbosity').raw('module-name', process.argv.join(' '));
+
+debug('hello')
+```
+
+Which then, can be invoked in such fashion
+```sh
+module-name -v module-name
+module-name --verbose module-name,tomate,set-verbosity
 ```
 
 ## More
 
-Additional links and comments.
+- https://nodejs.org/api/process.html#process_process_argv
+- https://github.com/visionmedia/debug
