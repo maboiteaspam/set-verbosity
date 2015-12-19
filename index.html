@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Set-verbosity by maboiteaspam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Set-verbosity</h1>
+      <h2 class="project-tagline">Set process.env[DEBUG] given process.argv</h2>
+      <a href="https://github.com/maboiteaspam/set-verbosity" class="btn">View on GitHub</a>
+      <a href="https://github.com/maboiteaspam/set-verbosity/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/maboiteaspam/set-verbosity/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="set-verbosity" class="anchor" href="#set-verbosity" aria-hidden="true"><span class="octicon octicon-link"></span></a>set-verbosity</h1>
+
+<p>Set <code>process.env[DEBUG]</code> given process.argv</p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>npm i maboiteaspam/set-verbosity --save
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h6>
+<a id="processargv" class="anchor" href="#processargv" aria-hidden="true"><span class="octicon octicon-link"></span></a>process.argv</h6>
+
+<p>Using the node <code>process.argv</code> value</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">raw</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>.<span class="pl-c1">join</span>(<span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>));
+
+<span class="pl-en">debug</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)</pre></div>
+
+<p>Which then, can be invoked in such fashion</p>
+
+<div class="highlight highlight-source-shell"><pre>module-name -v
+module-name --verbose
+module-name -v module-name
+module-name --verbose module-name,tomate,set-verbosity</pre></div>
+
+<h6>
+<a id="minimist" class="anchor" href="#minimist" aria-hidden="true"><span class="octicon octicon-link"></span></a>minimist</h6>
+
+<p>Using <code>minimist</code> module to pre parse values</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> argv  <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>minimist<span class="pl-pds">'</span></span>)(<span class="pl-smi">process</span>.<span class="pl-smi">argv</span>.<span class="pl-c1">slice</span>(<span class="pl-c1">2</span>));
+<span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">parsed</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">argv</span>.<span class="pl-smi">v</span><span class="pl-k">||</span><span class="pl-smi">argv</span>.<span class="pl-smi">verbose</span>);
+
+<span class="pl-en">debug</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)</pre></div>
+
+<p>Which then, can be invoked in such fashion</p>
+
+<div class="highlight highlight-source-shell"><pre>module-name -v
+module-name --verbose
+module-name -v module-name
+module-name --verbose module-name,tomate,set-verbosity</pre></div>
+
+<h3>
+<a id="debug-object" class="anchor" href="#debug-object" aria-hidden="true"><span class="octicon octicon-link"></span></a>debug object</h3>
+
+<p>This module returns instances of <code>debug</code> module</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">raw</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>.<span class="pl-c1">join</span>(<span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>));
+
+<span class="pl-en">debug</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)</pre></div>
+
+<p>Which then, can be invoked in such fashion</p>
+
+<div class="highlight highlight-source-shell"><pre>module-name -v
+module-name --verbose
+module-name -v module-name
+module-name --verbose module-name,tomate,set-verbosity</pre></div>
+
+<h2>
+<a id="more" class="anchor" href="#more" aria-hidden="true"><span class="octicon octicon-link"></span></a>More</h2>
+
+<ul>
+<li><a href="https://nodejs.org/api/process.html#process_process_argv">https://nodejs.org/api/process.html#process_process_argv</a></li>
+<li><a href="https://github.com/visionmedia/debug">https://github.com/visionmedia/debug</a></li>
+<li><a href="https://github.com/maboiteaspam/npi">https://github.com/maboiteaspam/npi</a></li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/maboiteaspam/set-verbosity">Set-verbosity</a> is maintained by <a href="https://github.com/maboiteaspam">maboiteaspam</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
