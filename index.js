@@ -8,8 +8,7 @@ setVerbosity.raw = function fromRawString (name, str) {
   return setVerbosity.parsed(name, k[2] || !!k[1])
 }
 setVerbosity.parsed = function fromParsedString (name, str) {
-  var verboseModules = ''+str
-  if (verboseModules) process.env['DEBUG'] = verboseModules===true?name:verboseModules;
+  if (str) process.env['DEBUG'] = str===true?name:''+str;
   var yourDebug = require('debug')(name)
   var debug = require('debug')
   debug('set-verbosity')('DEBUG:%s', process.env['DEBUG'])
