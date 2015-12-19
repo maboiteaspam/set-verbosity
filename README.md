@@ -77,7 +77,11 @@ When `typeof(arg)` is array, returns `setVerbosity.raw(name, arg)`
 
 - __setVerbosity(string name, string arg)__
 
-When `typeof(arg)` is array, returns `setVerbosity.parsed(name, arg)`
+When `typeof(arg)` is string, returns `setVerbosity.parsed(name, arg)`
+
+- __setVerbosity(string name, bool arg)__
+
+When `typeof(arg)` is bool, returns `setVerbosity.parsed(name, arg)`
 
 #### setVerbosity.parsed
 
