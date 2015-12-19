@@ -8,7 +8,7 @@ Set `process.env[DEBUG]` given process.argv
 
 ## Usage
 
-###### process.argv
+#### process.argv
 
 Using the node `process.argv` value
 
@@ -26,7 +26,7 @@ module-name -v module-name
 module-name --verbose module-name,tomate,set-verbosity
 ```
 
-###### minimist
+#### minimist
 
 Using `minimist` module to pre parse values
 
