@@ -13,7 +13,8 @@ Set `process.env[DEBUG]` given process.argv
 Using the node `process.argv` value
 
 ```js
-var debug = require('set-verbosity').raw('module-name', process.argv.join(' '));
+var debug = require('set-verbosity')('module-name', process.argv);
+// or var debug = require('set-verbosity').raw('module-name', process.argv.join(' '));
 
 debug('hello')
 ```
@@ -32,7 +33,8 @@ Using `minimist` module to pre parse values
 
 ```js
 var argv  = require('minimist')(process.argv.slice(2));
-var debug = require('set-verbosity').parsed('module-name', argv.v||argv.verbose);
+var debug = require('set-verbosity')('module-name', argv.v || argv.verbose);
+// or var debug = require('set-verbosity').parsed('module-name', argv.v || argv.verbose);
 
 debug('hello')
 ```
@@ -50,7 +52,7 @@ module-name --verbose module-name,tomate,set-verbosity
 This module returns instances of `debug` module
 
 ```js
-var debug = require('set-verbosity').raw('module-name', process.argv.join(' '));
+var debug = require('set-verbosity')('module-name', process.argv);
 
 debug('hello')
 ```
@@ -62,6 +64,54 @@ module-name --verbose
 module-name -v module-name
 module-name --verbose module-name,tomate,set-verbosity
 ```
+
+## Api
+
+#### setVerbosity
+
+`setVerbosity` is a `function` object with two additional methods `raw`, `parsed`.
+
+- __setVerbosity(string name, array arg)__
+
+When `typeof(arg)` is array, returns `setVerbosity.raw(name, arg)`
+
+- __setVerbosity(string name, string arg)__
+
+When `typeof(arg)` is array, returns `setVerbosity.parsed(name, arg)`
+
+#### setVerbosity.parsed
+
+- __setVerbosity.parsed(string name, string verboseModules)__
+
+Set `process.env['DEBUG']` to `verboseModules`.
+
+- __setVerbosity.parsed(string name, bool verbose)__
+
+Set `process.env['DEBUG']` to `name`.
+
+#### setVerbosity.raw
+
+- __setVerbosity.raw(string name, string argv)__
+
+Parse `argv` to extract `-v || --verbose (verboseModules)?`.
+Set `process.env['DEBUG']` to `verboseModules` or `name`.
+
+- __setVerbosity.raw(string name, bool verbose)__
+
+Set `process.env['DEBUG']` to `name`.
+
+
+## Examples
+
+```js
+var debug = require('set-verbosity')('module-name', process.argv);
+var debug = require('set-verbosity').raw('module-name', process.argv);
+
+var argv  = require('minimist')(process.argv.slice(2));
+var debug = require('set-verbosity')('module-name', argv.v || argv.verbose);
+var debug = require('set-verbosity').parsed('module-name', argv.v || argv.verbose);
+```
+
 
 ## More
 

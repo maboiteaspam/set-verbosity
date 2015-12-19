@@ -1,4 +1,4 @@
 
-var debug = require('./index.js').raw('module-name', process.argv.join(' '));
+var debug = require('./index.js')('module-name', process.argv);
 
 debug('hello')
