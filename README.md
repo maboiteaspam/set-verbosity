@@ -30,7 +30,7 @@ Using `minimist` module to pre parse values
 
 ```js
 var argv  = require('minimist')(process.argv.slice(2));
-var debug = require('./index.js').parsed('module-name', argv.v||argv.verbose);
+var debug = require('set-verbosity').parsed('module-name', argv.v||argv.verbose);
 
 debug('hello')
 ```
@@ -61,3 +61,4 @@ module-name --verbose module-name,tomate,set-verbosity
 
 - https://nodejs.org/api/process.html#process_process_argv
 - https://github.com/visionmedia/debug
+- https://github.com/maboiteaspam/npi
