@@ -20,6 +20,8 @@ debug('hello')
 
 Which then, can be invoked in such fashion
 ```sh
+module-name -v
+module-name --verbose
 module-name -v module-name
 module-name --verbose module-name,tomate,set-verbosity
 ```
@@ -37,6 +39,8 @@ debug('hello')
 
 Which then, can be invoked in such fashion
 ```sh
+module-name -v
+module-name --verbose
 module-name -v module-name
 module-name --verbose module-name,tomate,set-verbosity
 ```
@@ -53,6 +57,8 @@ debug('hello')
 
 Which then, can be invoked in such fashion
 ```sh
+module-name -v
+module-name --verbose
 module-name -v module-name
 module-name --verbose module-name,tomate,set-verbosity
 ```
