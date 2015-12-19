@@ -1,6 +1,6 @@
 {
   "name": "set-verbosity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Set process.env[DEBUG] given process.argv",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,9 @@
   "author": "maboiteaspam",
   "license": "WTF",
   "devDependencies": {
-    "minimist": "^1.2.0"
+    "minimist": ">=1.2.0 <2.0.0-0"
   },
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": ">=2.2.0 <3.0.0-0"
   }
 }
