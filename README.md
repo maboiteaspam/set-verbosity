@@ -71,15 +71,15 @@ module-name --verbose module-name,tomate,set-verbosity
 
 `setVerbosity` is a `function` object with two additional methods `raw`, `parsed`.
 
-- __setVerbosity(string name, object arg)__
+- __setVerbosity(string name, object arg) debug__
 
 When `typeof(arg)` is object, returns `setVerbosity.raw(name, arg)`
 
-- __setVerbosity(string name, string arg)__
+- __setVerbosity(string name, string arg) debug__
 
 When `typeof(arg)` is string, returns `setVerbosity.parsed(name, arg)`
 
-- __setVerbosity(string name, bool arg)__
+- __setVerbosity(string name, bool arg) debug__
 
 When `typeof(arg)` is bool, returns `setVerbosity.parsed(name, arg)`
 
@@ -89,18 +89,18 @@ When `typeof(arg)` is bool, returns `setVerbosity.parsed(name, arg)`
 
 Set `process.env['DEBUG']` to `verboseModules`.
 
-- __setVerbosity.parsed(string name, bool verbose)__
+- __setVerbosity.parsed(string name, bool verbose) debug__
 
 Set `process.env['DEBUG']` to `name`.
 
 #### setVerbosity.raw
 
-- __setVerbosity.raw(string name, string argv)__
+- __setVerbosity.raw(string name, string argv) debug__
 
 Parse `argv` to extract `-v || --verbose (verboseModules)?`.
 Set `process.env['DEBUG']` to `verboseModules` or `name`.
 
-- __setVerbosity.raw(string name, bool verbose)__
+- __setVerbosity.raw(string name, bool verbose) debug__
 
 Set `process.env['DEBUG']` to `name`.
 
