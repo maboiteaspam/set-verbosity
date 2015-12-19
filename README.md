@@ -71,9 +71,9 @@ module-name --verbose module-name,tomate,set-verbosity
 
 `setVerbosity` is a `function` object with two additional methods `raw`, `parsed`.
 
-- __setVerbosity(string name, array arg)__
+- __setVerbosity(string name, object arg)__
 
-When `typeof(arg)` is array, returns `setVerbosity.raw(name, arg)`
+When `typeof(arg)` is object, returns `setVerbosity.raw(name, arg)`
 
 - __setVerbosity(string name, string arg)__
 
