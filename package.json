@@ -1,6 +1,6 @@
 {
   "name": "set-verbosity",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Set process.env[DEBUG] given process.argv",
   "main": "index.js",
   "scripts": {
