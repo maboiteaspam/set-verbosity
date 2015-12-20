@@ -4,7 +4,7 @@ Set `process.env[DEBUG]` given process.argv
 
 ## Install
 
-    npm i maboiteaspam/set-verbosity --save
+    npm i @maboiteaspam/set-verbosity --save
 
 ## Usage
 
@@ -13,8 +13,9 @@ Set `process.env[DEBUG]` given process.argv
 Using the node `process.argv` value
 
 ```js
-var debug = require('set-verbosity')('module-name', process.argv);
-// or var debug = require('set-verbosity').raw('module-name', process.argv.join(' '));
+var debug = require('@maboiteaspam/set-verbosity')('module-name', process.argv);
+// or var debug = require('@maboiteaspam/set-verbosity')
+//    .raw('module-name', process.argv.join(' '));
 
 debug('hello')
 ```
@@ -33,8 +34,9 @@ Using `minimist` module to pre parse values
 
 ```js
 var argv  = require('minimist')(process.argv.slice(2));
-var debug = require('set-verbosity')('module-name', argv.v || argv.verbose);
-// or var debug = require('set-verbosity').parsed('module-name', argv.v || argv.verbose);
+var debug = require('@maboiteaspam/set-verbosity')('module-name', argv.v || argv.verbose);
+// or var debug = require('@maboiteaspam/set-verbosity')
+//  .parsed('module-name', argv.v || argv.verbose);
 
 debug('hello')
 ```
@@ -52,7 +54,7 @@ module-name --verbose module-name,tomate,set-verbosity
 This module returns instances of `debug` module
 
 ```js
-var debug = require('set-verbosity')('module-name', process.argv);
+var debug = require('@maboiteaspam/set-verbosity')('module-name', process.argv);
 
 debug('hello')
 ```
@@ -108,12 +110,12 @@ Set `process.env['DEBUG']` to `name`.
 ## Examples
 
 ```js
-var debug = require('set-verbosity')('module-name', process.argv);
-var debug = require('set-verbosity').raw('module-name', process.argv);
+var debug = require('@maboiteaspam/set-verbosity')('module-name', process.argv);
+var debug = require('@maboiteaspam/set-verbosity').raw('module-name', process.argv);
 
 var argv  = require('minimist')(process.argv.slice(2));
-var debug = require('set-verbosity')('module-name', argv.v || argv.verbose);
-var debug = require('set-verbosity').parsed('module-name', argv.v || argv.verbose);
+var debug = require('@maboiteaspam/set-verbosity')('module-name', argv.v || argv.verbose);
+var debug = require('@maboiteaspam/set-verbosity').parsed('module-name', argv.v || argv.verbose);
 ```
 
 

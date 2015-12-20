@@ -1,5 +1,5 @@
 {
-  "name": "set-verbosity",
+  "name": "@maboiteaspam/set-verbosity",
   "version": "1.0.4",
   "description": "Set process.env[DEBUG] given process.argv",
   "main": "index.js",
@@ -11,7 +11,8 @@
     "major": "npm version major -m \"major %s\"",
     "preversion": "echo \"npm test: not defined\" && npi --explicit",
     "version": "echo \"npm run build: not defined\"",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags && npm run public",
+    "public": "npm publish --access=public"
   },
   "keywords": [
     "process",
