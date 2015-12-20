@@ -122,3 +122,4 @@ var debug = require('set-verbosity').parsed('module-name', argv.v || argv.verbos
 - https://nodejs.org/api/process.html#process_process_argv
 - https://github.com/visionmedia/debug
 - https://github.com/maboiteaspam/npi
+- https://github.com/maboiteaspam/show-help
