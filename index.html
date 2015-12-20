@@ -36,7 +36,7 @@
 <h2>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
 
-<pre><code>npm i maboiteaspam/set-verbosity --save
+<pre><code>npm i @maboiteaspam/set-verbosity --save
 </code></pre>
 
 <h2>
@@ -47,7 +47,9 @@
 
 <p>Using the node <code>process.argv</code> value</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">raw</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>.<span class="pl-c1">join</span>(<span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>));
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>@maboiteaspam/set-verbosity<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>);
+<span class="pl-c">// or var debug = require('@maboiteaspam/set-verbosity')</span>
+<span class="pl-c">//    .raw('module-name', process.argv.join(' '));</span>
 
 <span class="pl-en">debug</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)</pre></div>
 
@@ -64,7 +66,9 @@ module-name --verbose module-name,tomate,set-verbosity</pre></div>
 <p>Using <code>minimist</code> module to pre parse values</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> argv  <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>minimist<span class="pl-pds">'</span></span>)(<span class="pl-smi">process</span>.<span class="pl-smi">argv</span>.<span class="pl-c1">slice</span>(<span class="pl-c1">2</span>));
-<span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">parsed</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">argv</span>.<span class="pl-smi">v</span><span class="pl-k">||</span><span class="pl-smi">argv</span>.<span class="pl-smi">verbose</span>);
+<span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>@maboiteaspam/set-verbosity<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">argv</span>.<span class="pl-smi">v</span> <span class="pl-k">||</span> <span class="pl-smi">argv</span>.<span class="pl-smi">verbose</span>);
+<span class="pl-c">// or var debug = require('@maboiteaspam/set-verbosity')</span>
+<span class="pl-c">//  .parsed('module-name', argv.v || argv.verbose);</span>
 
 <span class="pl-en">debug</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)</pre></div>
 
@@ -80,7 +84,7 @@ module-name --verbose module-name,tomate,set-verbosity</pre></div>
 
 <p>This module returns instances of <code>debug</code> module</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">raw</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>.<span class="pl-c1">join</span>(<span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>));
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>@maboiteaspam/set-verbosity<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>);
 
 <span class="pl-en">debug</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)</pre></div>
 
@@ -92,12 +96,80 @@ module-name -v module-name
 module-name --verbose module-name,tomate,set-verbosity</pre></div>
 
 <h2>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Api</h2>
+
+<h4>
+<a id="setverbosity" class="anchor" href="#setverbosity" aria-hidden="true"><span class="octicon octicon-link"></span></a>setVerbosity</h4>
+
+<p><code>setVerbosity</code> is a <code>function</code> object with two additional methods <code>raw</code>, <code>parsed</code>.</p>
+
+<ul>
+<li><strong>setVerbosity(string name, object arg) debug</strong></li>
+</ul>
+
+<p>When <code>typeof(arg)</code> is object, returns <code>setVerbosity.raw(name, arg)</code></p>
+
+<ul>
+<li><strong>setVerbosity(string name, string arg) debug</strong></li>
+</ul>
+
+<p>When <code>typeof(arg)</code> is string, returns <code>setVerbosity.parsed(name, arg)</code></p>
+
+<ul>
+<li><strong>setVerbosity(string name, bool arg) debug</strong></li>
+</ul>
+
+<p>When <code>typeof(arg)</code> is bool, returns <code>setVerbosity.parsed(name, arg)</code></p>
+
+<h4>
+<a id="setverbosityparsed" class="anchor" href="#setverbosityparsed" aria-hidden="true"><span class="octicon octicon-link"></span></a>setVerbosity.parsed</h4>
+
+<ul>
+<li><strong>setVerbosity.parsed(string name, string verboseModules)</strong></li>
+</ul>
+
+<p>Set <code>process.env['DEBUG']</code> to <code>verboseModules</code>.</p>
+
+<ul>
+<li><strong>setVerbosity.parsed(string name, bool verbose) debug</strong></li>
+</ul>
+
+<p>Set <code>process.env['DEBUG']</code> to <code>name</code>.</p>
+
+<h4>
+<a id="setverbosityraw" class="anchor" href="#setverbosityraw" aria-hidden="true"><span class="octicon octicon-link"></span></a>setVerbosity.raw</h4>
+
+<ul>
+<li><strong>setVerbosity.raw(string name, string argv) debug</strong></li>
+</ul>
+
+<p>Parse <code>argv</code> to extract <code>-v || --verbose (verboseModules)?</code>.
+Set <code>process.env['DEBUG']</code> to <code>verboseModules</code> or <code>name</code>.</p>
+
+<ul>
+<li><strong>setVerbosity.raw(string name, bool verbose) debug</strong></li>
+</ul>
+
+<p>Set <code>process.env['DEBUG']</code> to <code>name</code>.</p>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>@maboiteaspam/set-verbosity<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>);
+<span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>@maboiteaspam/set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">raw</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">process</span>.<span class="pl-smi">argv</span>);
+
+<span class="pl-k">var</span> argv  <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>minimist<span class="pl-pds">'</span></span>)(<span class="pl-smi">process</span>.<span class="pl-smi">argv</span>.<span class="pl-c1">slice</span>(<span class="pl-c1">2</span>));
+<span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>@maboiteaspam/set-verbosity<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">argv</span>.<span class="pl-smi">v</span> <span class="pl-k">||</span> <span class="pl-smi">argv</span>.<span class="pl-smi">verbose</span>);
+<span class="pl-k">var</span> debug <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>@maboiteaspam/set-verbosity<span class="pl-pds">'</span></span>).<span class="pl-en">parsed</span>(<span class="pl-s"><span class="pl-pds">'</span>module-name<span class="pl-pds">'</span></span>, <span class="pl-smi">argv</span>.<span class="pl-smi">v</span> <span class="pl-k">||</span> <span class="pl-smi">argv</span>.<span class="pl-smi">verbose</span>);</pre></div>
+
+<h2>
 <a id="more" class="anchor" href="#more" aria-hidden="true"><span class="octicon octicon-link"></span></a>More</h2>
 
 <ul>
 <li><a href="https://nodejs.org/api/process.html#process_process_argv">https://nodejs.org/api/process.html#process_process_argv</a></li>
 <li><a href="https://github.com/visionmedia/debug">https://github.com/visionmedia/debug</a></li>
 <li><a href="https://github.com/maboiteaspam/npi">https://github.com/maboiteaspam/npi</a></li>
+<li><a href="https://github.com/maboiteaspam/show-help">https://github.com/maboiteaspam/show-help</a></li>
 </ul>
         </section>
 
