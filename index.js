@@ -5,7 +5,7 @@ function setVerbosity(name, arg) {
 }
 setVerbosity.raw = function fromRawString (name, str) {
   var k = str.match(/\s+(-v|--verbose)\s?([^\s]+)?/);
-  return setVerbosity.parsed(name, k && (k[2] || !!k[1]))
+  return setVerbosity.parsed(name, k && ((k[2] && k[2]!=='--' && k[2]) || !!k[1]))
 }
 setVerbosity.parsed = function fromParsedString (name, str) {
   if (str) process.env['DEBUG'] = str===true?name:''+str;
