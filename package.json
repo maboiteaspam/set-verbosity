@@ -1,6 +1,6 @@
 {
   "name": "@maboiteaspam/set-verbosity",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Set process.env[DEBUG] given process.argv",
   "main": "index.js",
   "scripts": {
