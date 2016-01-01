@@ -13,12 +13,12 @@ Set `process.env[DEBUG]` given process.argv
 Using the node `process.argv` value
 
 ```js
-var pkg = ('require('./paclage.json')
+var pkg = ('require('./paclage.json');
 var debug = require('@maboiteaspam/set-verbosity')(pkg.name, process.argv);
-// or var debug = require('@maboiteaspam/set-verbosity')
+// or var debug = require('@maboiteaspam/set-verbosity');
 //    .raw(pkg.name, process.argv.join(' '));
 
-debug('hello')
+debug('hello');
 ```
 
 Which then, can be invoked in such fashion
@@ -34,13 +34,13 @@ module-name --verbose module-name,tomate,set-verbosity
 Using `minimist` module to pre parse values
 
 ```js
-var pkg = ('require('./paclage.json')
+var pkg = ('require('./paclage.json');
 var argv  = require('minimist')(process.argv.slice(2));
 var debug = require('@maboiteaspam/set-verbosity')(pkg.name, argv.v || argv.verbose);
-// or var debug = require('@maboiteaspam/set-verbosity')
+// or var debug = require('@maboiteaspam/set-verbosity');
 //  .parsed(pkg.name, argv.v || argv.verbose);
 
-debug('hello')
+debug('hello');
 ```
 
 Which then, can be invoked in such fashion
@@ -56,10 +56,10 @@ module-name --verbose module-name,tomate,set-verbosity
 This module returns instances of `debug` module
 
 ```js
-var pkg = ('require('./paclage.json')
+var pkg = ('require('./paclage.json');
 var debug = require('@maboiteaspam/set-verbosity')(pkg.name, process.argv);
 
-debug('hello')
+debug('hello');
 ```
 
 Which then, can be invoked in such fashion
@@ -113,7 +113,7 @@ Set `process.env['DEBUG']` to `name`.
 ## Examples
 
 ```js
-var pkg = ('require('./paclage.json')
+var pkg = ('require('./paclage.json');
 var debug = require('@maboiteaspam/set-verbosity')(pkg.name, process.argv);
 var debug = require('@maboiteaspam/set-verbosity').raw(pkg.name, process.argv);
 
