@@ -13,9 +13,10 @@ Set `process.env[DEBUG]` given process.argv
 Using the node `process.argv` value
 
 ```js
-var debug = require('@maboiteaspam/set-verbosity')('module-name', process.argv);
+var pkg = ('require('./paclage.json')
+var debug = require('@maboiteaspam/set-verbosity')(pkg.name, process.argv);
 // or var debug = require('@maboiteaspam/set-verbosity')
-//    .raw('module-name', process.argv.join(' '));
+//    .raw(pkg.name, process.argv.join(' '));
 
 debug('hello')
 ```
@@ -33,10 +34,11 @@ module-name --verbose module-name,tomate,set-verbosity
 Using `minimist` module to pre parse values
 
 ```js
+var pkg = ('require('./paclage.json')
 var argv  = require('minimist')(process.argv.slice(2));
-var debug = require('@maboiteaspam/set-verbosity')('module-name', argv.v || argv.verbose);
+var debug = require('@maboiteaspam/set-verbosity')(pkg.name, argv.v || argv.verbose);
 // or var debug = require('@maboiteaspam/set-verbosity')
-//  .parsed('module-name', argv.v || argv.verbose);
+//  .parsed(pkg.name, argv.v || argv.verbose);
 
 debug('hello')
 ```
@@ -54,7 +56,8 @@ module-name --verbose module-name,tomate,set-verbosity
 This module returns instances of `debug` module
 
 ```js
-var debug = require('@maboiteaspam/set-verbosity')('module-name', process.argv);
+var pkg = ('require('./paclage.json')
+var debug = require('@maboiteaspam/set-verbosity')(pkg.name, process.argv);
 
 debug('hello')
 ```
@@ -110,12 +113,13 @@ Set `process.env['DEBUG']` to `name`.
 ## Examples
 
 ```js
-var debug = require('@maboiteaspam/set-verbosity')('module-name', process.argv);
-var debug = require('@maboiteaspam/set-verbosity').raw('module-name', process.argv);
+var pkg = ('require('./paclage.json')
+var debug = require('@maboiteaspam/set-verbosity')(pkg.name, process.argv);
+var debug = require('@maboiteaspam/set-verbosity').raw(pkg.name, process.argv);
 
 var argv  = require('minimist')(process.argv.slice(2));
-var debug = require('@maboiteaspam/set-verbosity')('module-name', argv.v || argv.verbose);
-var debug = require('@maboiteaspam/set-verbosity').parsed('module-name', argv.v || argv.verbose);
+var debug = require('@maboiteaspam/set-verbosity')(pkg.name, argv.v || argv.verbose);
+var debug = require('@maboiteaspam/set-verbosity').parsed(pkg.name, argv.v || argv.verbose);
 ```
 
 
